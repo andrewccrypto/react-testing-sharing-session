@@ -13,6 +13,20 @@ interface PokemonDataCardProps {
 }
 
 function PokemonDataCard({ data }: PokemonDataCardProps): ReactElement {
+  function getId() {
+    const idString = `${data.id}`;
+
+    if (idString.length === 1) {
+      return `#00${idString}`;
+    }
+
+    if (idString.length === 2) {
+      return `#0${idString}`;
+    }
+
+    return `#${idString}`;
+  }
+
   return (
     <DocumentCard>
       <DocumentCardPreview
@@ -24,7 +38,7 @@ function PokemonDataCard({ data }: PokemonDataCardProps): ReactElement {
           },
         ]}
       />
-      <DocumentCardTitle title={data.name} shouldTruncate />
+      <DocumentCardTitle title={`${data.name} ${getId()}`} shouldTruncate />
       <div
         style={{
           display: "flex",
