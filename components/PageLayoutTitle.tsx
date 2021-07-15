@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { Spinner, SpinnerSize } from "@fluentui/react/lib/Spinner";
+import { Text } from "@fluentui/react/lib/Text";
 
 interface PageLayoutTitleProps {
   isLoading?: boolean;
@@ -18,7 +19,9 @@ function PageLayoutTitle({
         alignItems: "center",
       }}
     >
-      <h1>{title}</h1>
+      <Text as="h1" variant="xxLarge">
+        {title}
+      </Text>
       {isLoading && (
         <Spinner style={{ marginLeft: "2px" }} size={SpinnerSize.large} />
       )}
