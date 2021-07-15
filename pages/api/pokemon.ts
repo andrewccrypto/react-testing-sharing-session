@@ -66,15 +66,26 @@ const data: PokemonData[] = [
   },
 ];
 
-function getPokemonHandler(req: NextApiRequest, res: NextApiResponse): void {
+async function getPokemonHandler(
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> {
   if (req.method !== "GET") {
     res.status(404).end();
     return;
   }
 
-  console.log("req.query", req.query);
+  let filtered = [...data];
 
-  res.send({ data });
+  if (req.query.name && !Array.isArray(req.query.name)) {
+    const term = req.query.name.toLowerCase();
+
+    filtered = filtered.filter((v) => v.name.toLowerCase().indexOf(term) > -1);
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 800));
+
+  res.send({ data: filtered });
 }
 
 export default getPokemonHandler;
