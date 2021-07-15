@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import {
   PokemonData,
   PokemonElementElectric,
+  PokemonElementFairy,
   PokemonElementFighting,
   PokemonElementFire,
   PokemonElementFlying,
@@ -12,6 +13,7 @@ import {
   PokemonElementPoison,
   PokemonElementPsychic,
   PokemonElementRock,
+  PokemonElementSteel,
   PokemonElementWater,
   PokemonDataSort,
 } from "@types";
@@ -64,6 +66,20 @@ const data: PokemonData[] = [
     imgSrc: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/019.png",
     elementTypes: [PokemonElementNormal],
     elementWeaknesses: [PokemonElementFighting],
+  },
+  {
+    id: 39,
+    name: "Jigglypuff",
+    imgSrc: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/039.png",
+    elementTypes: [PokemonElementNormal, PokemonElementFairy],
+    elementWeaknesses: [PokemonElementSteel, PokemonElementPoison],
+  },
+  {
+    id: 129,
+    name: "Magikarp",
+    imgSrc: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/129.png",
+    elementTypes: [PokemonElementWater],
+    elementWeaknesses: [PokemonElementGrass, PokemonElementElectric],
   },
 ];
 

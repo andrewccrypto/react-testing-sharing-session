@@ -15,6 +15,7 @@ const config = {
     "@hooks/(.*)": "<rootDir>/hooks/$1",
     "@types": "<rootDir>/types.ts",
   },
+  setupFilesAfterEnv: ["<rootDir>/jest-setup.js"],
   testEnvironment: "jsdom",
 };
 
