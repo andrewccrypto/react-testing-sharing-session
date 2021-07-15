@@ -22,7 +22,7 @@ function PageLayoutTitle({
         {title}
       </Text>
       {isLoading && (
-        <Spinner style={{ marginLeft: "2px" }} size={SpinnerSize.large} />
+        <Spinner style={{ marginLeft: "5px" }} size={SpinnerSize.large} />
       )}
     </div>
   );
