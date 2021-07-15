@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`PokemonElementTypeTag Should handle Bug element type 1`] = `
+<div>
+  <div
+    style="background-color: rgb(168, 184, 32); border-radius: 5px; color: rgb(255, 255, 255); display: inline-block; padding: 5px;"
+  >
+    bug
+  </div>
+</div>
+`;
+
 exports[`PokemonElementTypeTag Should handle Grass element type 1`] = `
 <div>
   <div
