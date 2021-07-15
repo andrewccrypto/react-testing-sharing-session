@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
 import qs from "query-string";
-import { PokemonData } from "@types";
+import { PokemonData, PokemonDataSort } from "@types";
 
 interface UseQueryPokemonReducerState {
   data: PokemonData[] | null;
@@ -58,6 +58,7 @@ function reducer(
 
 export interface UseQueryPokemonParams {
   name: string | null;
+  sort: PokemonDataSort | null;
 }
 
 function useQueryPokemon(params: UseQueryPokemonParams): UseQueryPokemonResult {

@@ -61,3 +61,5 @@ export interface PokemonData {
   imgSrc: string;
   name: string;
 }
+
+export type PokemonDataSort = "id-asc" | "id-desc" | "name-asc" | "name-desc";

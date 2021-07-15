@@ -9,8 +9,10 @@ import useQueryPokemon, { UseQueryPokemonParams } from "@hooks/useQueryPokemon";
 
 function ComponentsOnlyPage() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [sort, setSort] = useState<UseQueryPokemonParams["sort"]>(null);
   const [queryParams, setQueryParams] = useState<UseQueryPokemonParams>({
     name: null,
+    sort: null,
   });
   const { data, isLoading, hasError } = useQueryPokemon(queryParams);
 
@@ -28,16 +30,16 @@ function ComponentsOnlyPage() {
             />
             <PokemonSearchBar
               isLoading={isLoading}
-              onSearch={(): void => {
-                setQueryParams((prevParams) => {
-                  const newQueryParams = { ...prevParams };
-
-                  newQueryParams.name = searchTerm || null;
-                  return newQueryParams;
-                });
-              }}
+              onSearch={(): void =>
+                setQueryParams({
+                  name: searchTerm || null,
+                  sort: sort || null,
+                })
+              }
               onSearchTermChange={(v): void => setSearchTerm(v)}
+              onSortChange={(v): void => setSort(v)}
               searchTerm={searchTerm}
+              sort={sort}
             />
           </div>
         }

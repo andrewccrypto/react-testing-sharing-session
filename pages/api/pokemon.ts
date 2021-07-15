@@ -13,6 +13,7 @@ import {
   PokemonElementPsychic,
   PokemonElementRock,
   PokemonElementWater,
+  PokemonDataSort,
 } from "@types";
 
 const data: PokemonData[] = [
@@ -66,6 +67,31 @@ const data: PokemonData[] = [
   },
 ];
 
+function sortData(
+  sort: PokemonDataSort,
+  unsorted: PokemonData[]
+): PokemonData[] {
+  const toSort = [...unsorted];
+
+  toSort.sort((a, b) => {
+    if (sort === "id-desc") {
+      return a.id - b.id;
+    }
+
+    if (sort === "id-asc") {
+      return b.id - a.id;
+    }
+
+    if (sort === "name-asc") {
+      return a.name.localeCompare(b.name);
+    }
+
+    return b.name.localeCompare(a.name);
+  });
+
+  return toSort;
+}
+
 async function getPokemonHandler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -75,17 +101,25 @@ async function getPokemonHandler(
     return;
   }
 
-  let filtered = [...data];
+  let responseData = [...data];
 
   if (req.query.name && !Array.isArray(req.query.name)) {
     const term = req.query.name.toLowerCase();
 
-    filtered = filtered.filter((v) => v.name.toLowerCase().indexOf(term) > -1);
+    responseData = responseData.filter(
+      (v) => v.name.toLowerCase().indexOf(term) > -1
+    );
+  }
+
+  if (req.query.sort && !Array.isArray(req.query.sort)) {
+    responseData = sortData(req.query.sort as PokemonDataSort, responseData);
+  } else {
+    responseData = sortData("id-desc", responseData);
   }
 
   await new Promise((resolve) => setTimeout(resolve, 800));
 
-  res.send({ data: filtered });
+  res.send({ data: responseData });
 }
 
 export default getPokemonHandler;
