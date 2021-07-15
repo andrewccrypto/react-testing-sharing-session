@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Head from "next/head";
-import { DefaultButton, SearchBox, Text } from "@fluentui/react";
+import { Text } from "@fluentui/react";
 import PageLayout from "@components/PageLayout";
 import PageLayoutTitle from "@components/PageLayoutTitle";
 import PokemonDataCard from "@components/PokemonDataCard";
+import PokemonSearchBar from "@components/PokemonSearchBar";
 import useQueryPokemon, { UseQueryPokemonParams } from "@hooks/useQueryPokemon";
 
 function ComponentsOnlyPage() {
@@ -25,12 +26,9 @@ function ComponentsOnlyPage() {
               title="Components Only Page"
               isLoading={isLoading}
             />
-            <form
-              id="search-form"
-              style={{ display: "flex", flexDirection: "row" }}
-              onSubmit={(e): void => {
-                e.preventDefault();
-
+            <PokemonSearchBar
+              isLoading={isLoading}
+              onSearch={(): void => {
                 setQueryParams((prevParams) => {
                   const newQueryParams = { ...prevParams };
 
@@ -38,22 +36,9 @@ function ComponentsOnlyPage() {
                   return newQueryParams;
                 });
               }}
-            >
-              <div style={{ flex: 1, paddingRight: "5px" }}>
-                <SearchBox
-                  onChange={(e): void => setSearchTerm(e?.target?.value || "")}
-                  placeholder="Search Pokemon name"
-                  value={searchTerm}
-                />
-              </div>
-              <DefaultButton
-                disabled={isLoading}
-                form="search-form"
-                type="submit"
-              >
-                Search
-              </DefaultButton>
-            </form>
+              onSearchTermChange={(v): void => setSearchTerm(v)}
+              searchTerm={searchTerm}
+            />
           </div>
         }
       >
