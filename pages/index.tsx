@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { DefaultButton } from "@fluentui/react/lib/Button";
+import { DefaultButton } from "@fluentui/react";
 import styles from "../styles/Home.module.css";
 
 function HomePage() {

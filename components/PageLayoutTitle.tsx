@@ -1,6 +1,5 @@
 import { ReactElement } from "react";
-import { Spinner, SpinnerSize } from "@fluentui/react/lib/Spinner";
-import { Text } from "@fluentui/react/lib/Text";
+import { Spinner, SpinnerSize, Text } from "@fluentui/react";
 
 interface PageLayoutTitleProps {
   isLoading?: boolean;

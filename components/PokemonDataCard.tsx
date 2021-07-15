@@ -3,8 +3,8 @@ import {
   DocumentCard,
   DocumentCardPreview,
   DocumentCardTitle,
-} from "@fluentui/react/lib/DocumentCard";
-import { ImageFit } from "@fluentui/react/lib/Image";
+  ImageFit,
+} from "@fluentui/react";
 import PokemonElementTypeTag from "@components/PokemonElementTypeTag";
 import { PokemonData } from "@types";
 

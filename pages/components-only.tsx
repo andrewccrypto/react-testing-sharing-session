@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Text } from "@fluentui/react/lib/Text";
+import { Text } from "@fluentui/react";
 import PageLayout from "@components/PageLayout";
 import PageLayoutTitle from "@components/PageLayoutTitle";
 import PokemonDataCard from "@components/PokemonDataCard";
