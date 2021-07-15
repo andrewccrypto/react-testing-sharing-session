@@ -20,40 +20,43 @@ function ComponentsOnlyPage() {
       </Head>
       <PageLayout
         headerContent={
-          <PageLayoutTitle title="Components Only Page" isLoading={isLoading} />
+          <div>
+            <PageLayoutTitle
+              title="Components Only Page"
+              isLoading={isLoading}
+            />
+            <form
+              id="search-form"
+              style={{ display: "flex", flexDirection: "row" }}
+              onSubmit={(e): void => {
+                e.preventDefault();
+
+                setQueryParams((prevParams) => {
+                  const newQueryParams = { ...prevParams };
+
+                  newQueryParams.name = searchTerm || null;
+                  return newQueryParams;
+                });
+              }}
+            >
+              <div style={{ flex: 1, paddingRight: "5px" }}>
+                <SearchBox
+                  onChange={(e): void => setSearchTerm(e?.target?.value || "")}
+                  placeholder="Search Pokemon name"
+                  value={searchTerm}
+                />
+              </div>
+              <DefaultButton
+                disabled={isLoading}
+                form="search-form"
+                type="submit"
+              >
+                Search
+              </DefaultButton>
+            </form>
+          </div>
         }
       >
-        <section>
-          <form
-            id="search-form"
-            style={{ display: "flex", flexDirection: "row" }}
-            onSubmit={(e): void => {
-              e.preventDefault();
-
-              setQueryParams((prevParams) => {
-                const newQueryParams = { ...prevParams };
-
-                newQueryParams.name = searchTerm || null;
-                return newQueryParams;
-              });
-            }}
-          >
-            <div style={{ flex: 1, paddingRight: "5px" }}>
-              <SearchBox
-                onChange={(e): void => setSearchTerm(e?.target?.value || "")}
-                placeholder="Search Pokemon name"
-                value={searchTerm}
-              />
-            </div>
-            <DefaultButton
-              disabled={isLoading}
-              form="search-form"
-              type="submit"
-            >
-              Search
-            </DefaultButton>
-          </form>
-        </section>
         {hasError ? (
           <div>
             <Text variant="medium">Oops - something went wrong!</Text>
