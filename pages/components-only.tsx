@@ -1,12 +1,17 @@
+import { useState } from "react";
 import Head from "next/head";
-import { Text } from "@fluentui/react";
+import { DefaultButton, SearchBox, Text } from "@fluentui/react";
 import PageLayout from "@components/PageLayout";
 import PageLayoutTitle from "@components/PageLayoutTitle";
 import PokemonDataCard from "@components/PokemonDataCard";
-import useQueryPokemon from "@hooks/useQueryPokemon";
+import useQueryPokemon, { UseQueryPokemonParams } from "@hooks/useQueryPokemon";
 
 function ComponentsOnlyPage() {
-  const { data, isLoading, hasError } = useQueryPokemon();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [queryParams, setQueryParams] = useState<UseQueryPokemonParams>({
+    name: null,
+  });
+  const { data, isLoading, hasError } = useQueryPokemon(queryParams);
 
   return (
     <>
@@ -18,6 +23,37 @@ function ComponentsOnlyPage() {
           <PageLayoutTitle title="Components Only Page" isLoading={isLoading} />
         }
       >
+        <section>
+          <form
+            id="search-form"
+            style={{ display: "flex", flexDirection: "row" }}
+            onSubmit={(e): void => {
+              e.preventDefault();
+
+              setQueryParams((prevParams) => {
+                const newQueryParams = { ...prevParams };
+
+                newQueryParams.name = searchTerm || null;
+                return newQueryParams;
+              });
+            }}
+          >
+            <div style={{ flex: 1, paddingRight: "5px" }}>
+              <SearchBox
+                onChange={(e): void => setSearchTerm(e?.target?.value || "")}
+                placeholder="Search Pokemon name"
+                value={searchTerm}
+              />
+            </div>
+            <DefaultButton
+              disabled={isLoading}
+              form="search-form"
+              type="submit"
+            >
+              Search
+            </DefaultButton>
+          </form>
+        </section>
         {hasError ? (
           <div>
             <Text variant="medium">Oops - something went wrong!</Text>

@@ -1,4 +1,5 @@
 import { useEffect, useReducer } from "react";
+import qs from "query-string";
 import { PokemonData } from "@types";
 
 interface UseQueryPokemonReducerState {
@@ -55,7 +56,11 @@ function reducer(
   }
 }
 
-function useQueryPokemon(): UseQueryPokemonResult {
+export interface UseQueryPokemonParams {
+  name: string | null;
+}
+
+function useQueryPokemon(params: UseQueryPokemonParams): UseQueryPokemonResult {
   const [state, dispatch] = useReducer(reducer, initState);
 
   useEffect(() => {
@@ -63,7 +68,14 @@ function useQueryPokemon(): UseQueryPokemonResult {
       dispatch({ type: GET_PENDING });
 
       try {
-        const response = await fetch("/api/pokemon");
+        const queryString = qs.stringify(params, {
+          skipNull: true,
+          skipEmptyString: true,
+        });
+        const url = queryString
+          ? `/api/pokemon?${queryString}`
+          : "/api/pokemon";
+        const response = await fetch(url);
         const { data } = await response.json();
         dispatch({ data, type: GET_FULFILLED });
       } catch (error) {
@@ -72,7 +84,7 @@ function useQueryPokemon(): UseQueryPokemonResult {
     }
 
     getData();
-  }, []);
+  }, [params]);
 
   return state;
 }
