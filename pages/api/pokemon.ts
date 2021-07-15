@@ -74,11 +74,11 @@ function sortData(
   const toSort = [...unsorted];
 
   toSort.sort((a, b) => {
-    if (sort === "id-desc") {
+    if (sort === "id-asc") {
       return a.id - b.id;
     }
 
-    if (sort === "id-asc") {
+    if (sort === "id-desc") {
       return b.id - a.id;
     }
 
@@ -114,7 +114,7 @@ async function getPokemonHandler(
   if (req.query.sort && !Array.isArray(req.query.sort)) {
     responseData = sortData(req.query.sort as PokemonDataSort, responseData);
   } else {
-    responseData = sortData("id-desc", responseData);
+    responseData = sortData("id-asc", responseData);
   }
 
   await new Promise((resolve) => setTimeout(resolve, 800));

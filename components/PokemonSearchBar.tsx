@@ -51,7 +51,7 @@ function PokemonSearchBar({
             }
           }}
           options={sortOptions}
-          selectedKey={sort || "id-desc"}
+          selectedKey={sort || "id-asc"}
         />
       </div>
       <DefaultButton disabled={isLoading} form="search-form" type="submit">
