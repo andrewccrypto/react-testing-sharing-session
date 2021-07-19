@@ -1,9 +1,13 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 import usePokemonSearchState from "@hooks/usePokemonSearchState";
+// import usePokemonSearchStateV2 from "@hooks/usePokemonSearchStateV2";
+
+const useHook = usePokemonSearchState;
+// const useHook = usePokemonSearchStateV2;
 
 describe("usePokemonSearchState", () => {
   it("Should allow changing `searchTerm` state", () => {
-    const { result } = renderHook(() => usePokemonSearchState());
+    const { result } = renderHook(() => useHook());
 
     expect(result.current.state.searchTerm).toEqual("");
 
@@ -15,7 +19,7 @@ describe("usePokemonSearchState", () => {
   });
 
   it("Should allow changing `sort` state", () => {
-    const { result } = renderHook(() => usePokemonSearchState());
+    const { result } = renderHook(() => useHook());
 
     expect(result.current.state.sort).toEqual(null);
 
@@ -27,7 +31,7 @@ describe("usePokemonSearchState", () => {
   });
 
   it("Should allow updating `queryParams` state", () => {
-    const { result } = renderHook(() => usePokemonSearchState());
+    const { result } = renderHook(() => useHook());
 
     expect(result.current.state.queryParams).toEqual({
       name: null,
@@ -57,7 +61,7 @@ describe("usePokemonSearchState", () => {
   });
 
   it("Should allow resetting state", () => {
-    const { result } = renderHook(() => usePokemonSearchState());
+    const { result } = renderHook(() => useHook());
 
     expect(result.current.state.searchTerm).toEqual("");
     expect(result.current.state.sort).toEqual(null);

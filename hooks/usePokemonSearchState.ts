@@ -29,12 +29,11 @@ function usePokemonSearchState(): UsePokemonSearchStateResult {
     },
     onSearchTermChange: (v: string): void => setSearchTerm(v),
     onSortChange: (v: UseQueryPokemonParams["sort"]): void => setSort(v),
-    onSearch: (): void => {
+    onSearch: (): void =>
       setQueryParams({
         name: searchTerm || null,
         sort: sort || null,
-      });
-    },
+      }),
     state: { searchTerm, sort, queryParams },
   };
 }
