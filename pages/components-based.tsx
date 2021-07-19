@@ -19,7 +19,7 @@ function ComponentsBasedPage() {
   return (
     <>
       <Head>
-        <title>Component-based State Page</title>
+        <title>Component-based Page</title>
       </Head>
       <PageLayout
         headerContent={
