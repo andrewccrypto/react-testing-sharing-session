@@ -7,7 +7,7 @@ import PokemonDataCard from "@components/PokemonDataCard";
 import PokemonSearchBar from "@components/PokemonSearchBar";
 import useQueryPokemon, { UseQueryPokemonParams } from "@hooks/useQueryPokemon";
 
-function ComponentsOnlyPage() {
+function ComponentsBasedPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sort, setSort] = useState<UseQueryPokemonParams["sort"]>(null);
   const [queryParams, setQueryParams] = useState<UseQueryPokemonParams>({
@@ -19,17 +19,25 @@ function ComponentsOnlyPage() {
   return (
     <>
       <Head>
-        <title>Components Only Page</title>
+        <title>Component-based State Page</title>
       </Head>
       <PageLayout
         headerContent={
           <div>
             <PageLayoutTitle
-              title="Components Only Page"
+              title="Components-based Page"
               isLoading={isLoading}
             />
             <PokemonSearchBar
               isLoading={isLoading}
+              onReset={(): void => {
+                setSearchTerm("");
+                setSort(null);
+                setQueryParams({
+                  name: null,
+                  sort: null,
+                });
+              }}
               onSearch={(): void =>
                 setQueryParams({
                   name: searchTerm || null,
@@ -69,4 +77,4 @@ function ComponentsOnlyPage() {
   );
 }
 
-export default ComponentsOnlyPage;
+export default ComponentsBasedPage;

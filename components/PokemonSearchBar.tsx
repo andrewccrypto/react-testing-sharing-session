@@ -4,6 +4,7 @@ import { UseQueryPokemonParams } from "@hooks/useQueryPokemon";
 
 interface PokemonSearchBarProps {
   isLoading: boolean;
+  onReset(): void;
   onSearch(): void;
   onSearchTermChange(v: string): void;
   onSortChange(v: UseQueryPokemonParams["sort"]): void;
@@ -20,6 +21,7 @@ const sortOptions = [
 
 function PokemonSearchBar({
   isLoading,
+  onReset,
   onSearch,
   onSearchTermChange,
   onSortChange,
@@ -54,8 +56,16 @@ function PokemonSearchBar({
           selectedKey={sort || "id-asc"}
         />
       </div>
-      <DefaultButton disabled={isLoading} form="search-form" type="submit">
+      <DefaultButton
+        disabled={isLoading}
+        form="search-form"
+        style={{ marginRight: "5px" }}
+        type="submit"
+      >
         Search
+      </DefaultButton>
+      <DefaultButton onClick={onReset} type="button">
+        Reset
       </DefaultButton>
     </form>
   );

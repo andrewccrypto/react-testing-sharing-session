@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { DefaultButton } from "@fluentui/react";
+import { DefaultButton, Stack } from "@fluentui/react";
 import styles from "../styles/Home.module.css";
 
 function HomePage() {
@@ -9,9 +9,18 @@ function HomePage() {
       <Head>
         <title>Home</title>
       </Head>
-      <Link href="/components-only" passHref>
-        <DefaultButton>Components Only</DefaultButton>
-      </Link>
+      <Stack tokens={{ childrenGap: 10 }}>
+        <Stack.Item align="center">
+          <Link href="/components-based" passHref>
+            <DefaultButton>Components-based</DefaultButton>
+          </Link>
+        </Stack.Item>
+        <Stack.Item align="center">
+          <Link href="/hooks-based" passHref>
+            <DefaultButton>Hooks-based</DefaultButton>
+          </Link>
+        </Stack.Item>
+      </Stack>
     </div>
   );
 }
