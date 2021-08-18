@@ -12,11 +12,13 @@ const config = {
   coverageProvider: "v8",
   moduleNameMapper: {
     "@components/(.*)": "<rootDir>/components/$1",
+    "@fluentui/react/lib/(.*)$": "@fluentui/react/lib-commonjs/$1",
     "@hooks/(.*)": "<rootDir>/hooks/$1",
     "@types": "<rootDir>/types.ts",
   },
   setupFilesAfterEnv: ["<rootDir>/jest-setup.js"],
   testEnvironment: "jsdom",
+  transformIgnorePatterns: ["node_modules/(?!office-ui-fabric-react)"],
 };
 
 module.exports = config;
