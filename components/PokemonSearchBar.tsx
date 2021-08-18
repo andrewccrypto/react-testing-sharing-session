@@ -37,14 +37,14 @@ function PokemonSearchBar({
         onSearch();
       }}
     >
-      <div style={{ flex: 1, paddingRight: '5px' }}>
+      <div style={{ flex: 3, paddingRight: '5px' }}>
         <SearchBox
           onChange={(e): void => onSearchTermChange(e?.target?.value || '')}
           placeholder="Search Pokemon name"
           value={searchTerm}
         />
       </div>
-      <div style={{ paddingRight: '5px' }}>
+      <div style={{ flex: 1, paddingRight: '5px' }}>
         <Dropdown
           label="Sort by"
           onChange={(_e, item): void => {
