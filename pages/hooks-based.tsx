@@ -6,6 +6,7 @@ import PokemonDataCard from '@components/PokemonDataCard';
 import PokemonSearchBar from '@components/PokemonSearchBar';
 import useQueryPokemon from '@hooks/useQueryPokemon';
 import usePokemonSearchState from '@hooks/usePokemonSearchState';
+// import usePokemonSearchStateV2 from "@hooks/usePokemonSearchStateV2";
 
 function HooksBasedPage() {
   const {
@@ -15,6 +16,13 @@ function HooksBasedPage() {
     onSortChange,
     state: { searchTerm, sort, queryParams },
   } = usePokemonSearchState();
+  // const {
+  //   onReset,
+  //   onSearch,
+  //   onSearchTermChange,
+  //   onSortChange,
+  //   state: { searchTerm, sort, queryParams },
+  // } = usePokemonSearchStateV2();
   const { data, isLoading, hasError } = useQueryPokemon(queryParams);
 
   return (
