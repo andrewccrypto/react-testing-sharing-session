@@ -1,15 +1,15 @@
-import { useState } from "react";
-import Head from "next/head";
-import { Text } from "@fluentui/react";
-import PageLayout from "@components/PageLayout";
-import PageLayoutTitle from "@components/PageLayoutTitle";
-import PokemonDataCard from "@components/PokemonDataCard";
-import PokemonSearchBar from "@components/PokemonSearchBar";
-import useQueryPokemon, { UseQueryPokemonParams } from "@hooks/useQueryPokemon";
+import { useState } from 'react';
+import Head from 'next/head';
+import { Text } from '@fluentui/react';
+import PageLayout from '@components/PageLayout';
+import PageLayoutTitle from '@components/PageLayoutTitle';
+import PokemonDataCard from '@components/PokemonDataCard';
+import PokemonSearchBar from '@components/PokemonSearchBar';
+import useQueryPokemon, { UseQueryPokemonParams } from '@hooks/useQueryPokemon';
 
 function ComponentsBasedPage() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [sort, setSort] = useState<UseQueryPokemonParams["sort"]>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sort, setSort] = useState<UseQueryPokemonParams['sort']>(null);
   const [queryParams, setQueryParams] = useState<UseQueryPokemonParams>({
     name: null,
     sort: null,
@@ -31,7 +31,7 @@ function ComponentsBasedPage() {
             <PokemonSearchBar
               isLoading={isLoading}
               onReset={(): void => {
-                setSearchTerm("");
+                setSearchTerm('');
                 setSort(null);
                 setQueryParams({
                   name: null,
@@ -59,14 +59,14 @@ function ComponentsBasedPage() {
         ) : (
           <div
             style={{
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              justifyContent: "center",
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
             }}
           >
             {data?.map((pokemonData) => (
-              <div key={pokemonData.id} style={{ padding: "5px" }}>
+              <div key={pokemonData.id} style={{ padding: '5px' }}>
                 <PokemonDataCard data={pokemonData} />
               </div>
             ))}

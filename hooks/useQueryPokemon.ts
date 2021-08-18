@@ -1,6 +1,6 @@
-import { useEffect, useReducer } from "react";
-import qs from "query-string";
-import { PokemonData, PokemonDataSort } from "@types";
+import { useEffect, useReducer } from 'react';
+import qs from 'query-string';
+import { PokemonData, PokemonDataSort } from '@types';
 
 interface UseQueryPokemonReducerState {
   data: PokemonData[] | null;
@@ -14,11 +14,11 @@ const initState: UseQueryPokemonReducerState = {
   isLoading: false,
 };
 
-const GET_PENDING = "GET_PENDING";
+const GET_PENDING = 'GET_PENDING';
 
-const GET_FULFILLED = "GET_FULFILLED";
+const GET_FULFILLED = 'GET_FULFILLED';
 
-const GET_REJECTED = "GET_REJECTED";
+const GET_REJECTED = 'GET_REJECTED';
 
 interface GetPendingAction {
   type: typeof GET_PENDING;
@@ -75,7 +75,7 @@ function useQueryPokemon(params: UseQueryPokemonParams): UseQueryPokemonResult {
         });
         const url = queryString
           ? `/api/pokemon?${queryString}`
-          : "/api/pokemon";
+          : '/api/pokemon';
         const response = await fetch(url);
         const { data } = await response.json();
         dispatch({ data, type: GET_FULFILLED });

@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode } from 'react';
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -12,23 +12,23 @@ function PageLayout({
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
-        overflow: "hidden",
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        overflow: 'hidden',
       }}
     >
       {headerContent && (
-        <header style={{ paddingLeft: "15vw", paddingRight: "15vw" }}>
+        <header style={{ paddingLeft: '15vw', paddingRight: '15vw' }}>
           {headerContent}
         </header>
       )}
       <div
         style={{
-          height: "100%",
-          overflow: "auto",
-          paddingLeft: "15vw",
-          paddingRight: "15vw",
+          height: '100%',
+          overflow: 'auto',
+          paddingLeft: '15vw',
+          paddingRight: '15vw',
         }}
       >
         {children}

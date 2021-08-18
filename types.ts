@@ -1,38 +1,38 @@
-export const PokemonElementNormal = "normal";
+export const PokemonElementNormal = 'normal';
 
-export const PokemonElementFire = "fire";
+export const PokemonElementFire = 'fire';
 
-export const PokemonElementWater = "water";
+export const PokemonElementWater = 'water';
 
-export const PokemonElementGrass = "grass";
+export const PokemonElementGrass = 'grass';
 
-export const PokemonElementElectric = "electric";
+export const PokemonElementElectric = 'electric';
 
-export const PokemonElementIce = "ice";
+export const PokemonElementIce = 'ice';
 
-export const PokemonElementFighting = "fighting";
+export const PokemonElementFighting = 'fighting';
 
-export const PokemonElementPoison = "poison";
+export const PokemonElementPoison = 'poison';
 
-export const PokemonElementGround = "ground";
+export const PokemonElementGround = 'ground';
 
-export const PokemonElementFlying = "flying";
+export const PokemonElementFlying = 'flying';
 
-export const PokemonElementPsychic = "psychic";
+export const PokemonElementPsychic = 'psychic';
 
-export const PokemonElementBug = "bug";
+export const PokemonElementBug = 'bug';
 
-export const PokemonElementRock = "rock";
+export const PokemonElementRock = 'rock';
 
-export const PokemonElementGhost = "ghost";
+export const PokemonElementGhost = 'ghost';
 
-export const PokemonElementDark = "dark";
+export const PokemonElementDark = 'dark';
 
-export const PokemonElementDragon = "dragon";
+export const PokemonElementDragon = 'dragon';
 
-export const PokemonElementSteel = "steel";
+export const PokemonElementSteel = 'steel';
 
-export const PokemonElementFairy = "fairy";
+export const PokemonElementFairy = 'fairy';
 
 export type PokemonElement =
   | typeof PokemonElementNormal
@@ -62,4 +62,4 @@ export interface PokemonData {
   name: string;
 }
 
-export type PokemonDataSort = "id-asc" | "id-desc" | "name-asc" | "name-desc";
+export type PokemonDataSort = 'id-asc' | 'id-desc' | 'name-asc' | 'name-desc';

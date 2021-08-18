@@ -1,9 +1,9 @@
-import { render } from "@testing-library/react";
-import PokemonElementTypeTag from "@components/PokemonElementTypeTag";
-import { PokemonElementBug, PokemonElementGrass } from "@types";
+import { render } from '@testing-library/react';
+import PokemonElementTypeTag from '@components/PokemonElementTypeTag';
+import { PokemonElementBug, PokemonElementGrass } from '@types';
 
-describe("PokemonElementTypeTag", () => {
-  it("Should handle Bug element type", () => {
+describe('PokemonElementTypeTag', () => {
+  it('Should handle Bug element type', () => {
     const { container } = render(
       <PokemonElementTypeTag element={PokemonElementBug} />
     );
@@ -11,7 +11,7 @@ describe("PokemonElementTypeTag", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it("Should handle Grass element type", () => {
+  it('Should handle Grass element type', () => {
     const { container } = render(
       <PokemonElementTypeTag element={PokemonElementGrass} />
     );

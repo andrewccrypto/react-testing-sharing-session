@@ -1,11 +1,11 @@
-import Head from "next/head";
-import { Text } from "@fluentui/react";
-import PageLayout from "@components/PageLayout";
-import PageLayoutTitle from "@components/PageLayoutTitle";
-import PokemonDataCard from "@components/PokemonDataCard";
-import PokemonSearchBar from "@components/PokemonSearchBar";
-import useQueryPokemon from "@hooks/useQueryPokemon";
-import usePokemonSearchState from "@hooks/usePokemonSearchState";
+import Head from 'next/head';
+import { Text } from '@fluentui/react';
+import PageLayout from '@components/PageLayout';
+import PageLayoutTitle from '@components/PageLayoutTitle';
+import PokemonDataCard from '@components/PokemonDataCard';
+import PokemonSearchBar from '@components/PokemonSearchBar';
+import useQueryPokemon from '@hooks/useQueryPokemon';
+import usePokemonSearchState from '@hooks/usePokemonSearchState';
 
 function HooksBasedPage() {
   const {
@@ -45,14 +45,14 @@ function HooksBasedPage() {
         ) : (
           <div
             style={{
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              justifyContent: "center",
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
             }}
           >
             {data?.map((pokemonData) => (
-              <div key={pokemonData.id} style={{ padding: "5px" }}>
+              <div key={pokemonData.id} style={{ padding: '5px' }}>
                 <PokemonDataCard data={pokemonData} />
               </div>
             ))}

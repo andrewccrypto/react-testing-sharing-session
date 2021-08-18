@@ -1,25 +1,25 @@
-import { useReducer, useState } from "react";
-import { UseQueryPokemonParams } from "@hooks/useQueryPokemon";
+import { useReducer, useState } from 'react';
+import { UseQueryPokemonParams } from '@hooks/useQueryPokemon';
 
 interface UsePokemonSearchStateV2ReducerState {
   queryParams: UseQueryPokemonParams;
   searchTerm: string;
-  sort: UseQueryPokemonParams["sort"];
+  sort: UseQueryPokemonParams['sort'];
 }
 
 const initState: UsePokemonSearchStateV2ReducerState = {
   queryParams: { name: null, sort: null },
-  searchTerm: "",
+  searchTerm: '',
   sort: null,
 };
 
-const ON_RESET = "ON_RESET";
+const ON_RESET = 'ON_RESET';
 
-const ON_SEARCH_TERM_CHANGE = "ON_SEARCH_TERM_CHANGE";
+const ON_SEARCH_TERM_CHANGE = 'ON_SEARCH_TERM_CHANGE';
 
-const ON_SORT_CHANGE = "ON_SORT_CHANGE";
+const ON_SORT_CHANGE = 'ON_SORT_CHANGE';
 
-const ON_SEARCH = "ON_SEARCH";
+const ON_SEARCH = 'ON_SEARCH';
 
 interface OnResetAction {
   type: typeof ON_RESET;
@@ -32,7 +32,7 @@ interface OnSearchTermChangeAction {
 
 interface OnSortChangeAction {
   type: typeof ON_SORT_CHANGE;
-  value: UseQueryPokemonParams["sort"];
+  value: UseQueryPokemonParams['sort'];
 }
 
 interface OnSearchAction {
@@ -74,11 +74,11 @@ interface UsePokemonSearchStateV2Result {
   onReset(): void;
   onSearch(): void;
   onSearchTermChange(value: string): void;
-  onSortChange(value: UseQueryPokemonParams["sort"]): void;
+  onSortChange(value: UseQueryPokemonParams['sort']): void;
   state: {
     queryParams: UseQueryPokemonParams;
     searchTerm: string;
-    sort: UseQueryPokemonParams["sort"];
+    sort: UseQueryPokemonParams['sort'];
   };
 }
 
@@ -92,7 +92,7 @@ function usePokemonSearchStateV2(): UsePokemonSearchStateV2Result {
     onReset: (): void => dispatch({ type: ON_RESET }),
     onSearchTermChange: (v: string): void =>
       dispatch({ type: ON_SEARCH_TERM_CHANGE, value: v }),
-    onSortChange: (v: UseQueryPokemonParams["sort"]): void =>
+    onSortChange: (v: UseQueryPokemonParams['sort']): void =>
       dispatch({ type: ON_SORT_CHANGE, value: v }),
     onSearch: (): void => dispatch({ type: ON_SEARCH }),
     state: { searchTerm, sort, queryParams },

@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from 'next';
 import {
   PokemonData,
   PokemonElementElectric,
@@ -16,13 +16,13 @@ import {
   PokemonElementSteel,
   PokemonElementWater,
   PokemonDataSort,
-} from "@types";
+} from '@types';
 
 const data: PokemonData[] = [
   {
     id: 1,
-    name: "Bulbasaur",
-    imgSrc: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
+    name: 'Bulbasaur',
+    imgSrc: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
     elementTypes: [PokemonElementGrass, PokemonElementPoison],
     elementWeaknesses: [
       PokemonElementFire,
@@ -33,8 +33,8 @@ const data: PokemonData[] = [
   },
   {
     id: 4,
-    name: "Charmander",
-    imgSrc: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
+    name: 'Charmander',
+    imgSrc: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png',
     elementTypes: [PokemonElementFire],
     elementWeaknesses: [
       PokemonElementGround,
@@ -44,15 +44,15 @@ const data: PokemonData[] = [
   },
   {
     id: 7,
-    name: "Squirtle",
-    imgSrc: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png",
+    name: 'Squirtle',
+    imgSrc: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png',
     elementTypes: [PokemonElementWater],
     elementWeaknesses: [PokemonElementElectric, PokemonElementGrass],
   },
   {
     id: 16,
-    name: "Pidgey",
-    imgSrc: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/016.png",
+    name: 'Pidgey',
+    imgSrc: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/016.png',
     elementTypes: [PokemonElementNormal, PokemonElementFlying],
     elementWeaknesses: [
       PokemonElementElectric,
@@ -62,22 +62,22 @@ const data: PokemonData[] = [
   },
   {
     id: 19,
-    name: "Rattata",
-    imgSrc: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/019.png",
+    name: 'Rattata',
+    imgSrc: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/019.png',
     elementTypes: [PokemonElementNormal],
     elementWeaknesses: [PokemonElementFighting],
   },
   {
     id: 39,
-    name: "Jigglypuff",
-    imgSrc: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/039.png",
+    name: 'Jigglypuff',
+    imgSrc: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/039.png',
     elementTypes: [PokemonElementNormal, PokemonElementFairy],
     elementWeaknesses: [PokemonElementSteel, PokemonElementPoison],
   },
   {
     id: 129,
-    name: "Magikarp",
-    imgSrc: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/129.png",
+    name: 'Magikarp',
+    imgSrc: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/129.png',
     elementTypes: [PokemonElementWater],
     elementWeaknesses: [PokemonElementGrass, PokemonElementElectric],
   },
@@ -90,15 +90,15 @@ function sortData(
   const toSort = [...unsorted];
 
   toSort.sort((a, b) => {
-    if (sort === "id-asc") {
+    if (sort === 'id-asc') {
       return a.id - b.id;
     }
 
-    if (sort === "id-desc") {
+    if (sort === 'id-desc') {
       return b.id - a.id;
     }
 
-    if (sort === "name-asc") {
+    if (sort === 'name-asc') {
       return a.name.localeCompare(b.name);
     }
 
@@ -112,7 +112,7 @@ async function getPokemonHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
-  if (req.method !== "GET") {
+  if (req.method !== 'GET') {
     res.status(404).end();
     return;
   }
@@ -130,7 +130,7 @@ async function getPokemonHandler(
   if (req.query.sort && !Array.isArray(req.query.sort)) {
     responseData = sortData(req.query.sort as PokemonDataSort, responseData);
   } else {
-    responseData = sortData("id-asc", responseData);
+    responseData = sortData('id-asc', responseData);
   }
 
   await new Promise((resolve) => setTimeout(resolve, 800));
